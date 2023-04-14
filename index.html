@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>febo sequence</title>
+</head>
+<body>
+  <div class="center" >
+    <input type="number" placeholder="enter a number" value="">
+    <button onclick="run()">start</button>
+    <div class="display"></div>
+  </div>
+  <script>
+    function run(){
+      let arrLength = parseInt(document.querySelector(`.center input`).value);
+      let arr = [];
+      let display = document.querySelector(`.display`);
+      display.innerHTML = ""
+      if(typeof arrLength === "number" && arrLength >= 0 && arrLength <= 1000 ){
+        for(let i = 0; i<arrLength; i++){
+          if(i === 0 || i === 1){
+            arr.push(i);
+            display.innerHTML += `<span>${i}</span>`;
+          }else{
+            display.innerHTML += `<span>${(arr[i-1] + arr[i-2])}</span>`;
+            arr.push((arr[i-1] + arr[i-2]));
+          }
+        }
+      }
+    else{
+      display.innerHTML = `please enter a valid number`;
+    }}
+  </script>
+  <style>
+    body{
+      background-color: #eee;
+      color: #333;
+    }
+    .center{
+      margin: 50px auto;
+      max-width: 500px;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .center input{
+      font-size: 15px;
+    }
+    .center button{
+      font-size: 20px;
+      box-shadow: 0 0 3px#000;
+    }
+    .center .display{
+      min-width: 100%;
+      height: fit-content;
+      background-color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .display span{
+      border: 1px rgb(235, 235, 235) solid;
+      padding: 5px;
+    }
+  </style>
+</body>
+</html>

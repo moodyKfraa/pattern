@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>febo sequence</title>
+</head>
+<body>
+  <div class="center" >
+    <input type="number" placeholder="enter a number" value="">
+    <button onclick="run()">start</button>
+    <div class="display"></div>
+  </div>
+  <script>
+      function run(){
+          
+        let arrLength = parseInt(document.querySelector(`.center input`).value);
+        let sympol = (prompt(`enter any symbol: `)).toString();
+        let display = document.querySelector(`.display`);
+      display.innerHTML = "";
+
+      if(typeof arrLength === "number" && arrLength > 0 && arrLength <= 100 ){
+        for(let i = 1; i <= arrLength; i++){
+          if(i === 1 || i === 2 ){
+         display.innerHTML += ` <span>${sympol.repeat(i)}</span> `
+          }else{
+            display.innerHTML += ` <span>${sympol.repeat(i-2)}</span> `
+          }
+        };
+    //   display.innerHTML = arr.join("<br>");
+    }else{
+      display.innerHTML = `please enter a valid number`;
+    }}
+  </script>
+  <style>
+    body{
+      background-color: #eee;
+      color: #333;
+    }
+    .center{
+      margin: 50px auto;
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .center input{
+      font-size: 15px;
+      width: 200px;
+    }
+    .center button{
+      font-size: 20px;
+      box-shadow: 0 0 3px#000;
+      width: 200px;
+    }
+    .center .display{
+      min-width: 100%;
+      height: fit-content;
+      background-color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .display span{
+      border: 1px rgb(235, 235, 235) solid;
+      padding: 5px;
+    }
+  </style>
+</body>
+</html>
